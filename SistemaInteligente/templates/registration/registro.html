@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ingreso al sistema</title>
+	{% load static %}
+	
+	<link type='text/css' rel='stylesheet' href="{% static 'css/login.css' %}">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<br>
+	
+	<div class="col-12 col-md-6 offset-md-3">
+		<div class="card">
+			<form action="" method="POST">
+				<h2>Register Form</h2>
+				<div class="imgcontainer">
+					<img src='{% static "img/img_avatar2.jpg" %}' alt="Avatar" class="avatar">
+				</div>
+
+				<div class="container">
+					{% csrf_token %}
+					{{form}}
+					<a class="btn btn-dark" href="{% url 'home' %}">Ir al home</a>
+					<a class="btn btn-primary" href="{% url 'login' %}">Iniciar sesion</a>
+					<input type="submit" value="Registrar" class="btn btn-success float-right">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

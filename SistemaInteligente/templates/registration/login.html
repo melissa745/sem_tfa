@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestor Inteligente de Archivos - Inicio de sesión</title>
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  -->
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <form action="" method="post">
+    <h3>Inicio de Sesión</h3>
+    <label for="username">Usuario</label>
+    {% csrf_token %}
+    <input type="text" placeholder="Email or User" name="username" id="usuario" required>
+    <label for="password">Contraseña</label>
+    <input type="password" placeholder="Password" name="password" id="pass" required>
+
+    <button type="submit">Acceder</button>
+    <div class="social">
+      <div class="go"><i class="fab fa-google"></i> Google</div>
+      <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+    </div>
+  </form>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.slick/1.8.1/slick.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
+
+</html>

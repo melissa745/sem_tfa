@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Obtener datos de Gemini y procesar con Generative AI</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+    <script src="script.js"></script>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>
+urls.py:
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('process_pdf/', views.process_pdf, name='process_pdf'),
+]

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload Form</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body class="text-center">
+    {% block content%}
+    <div class="nav-scroller bg-body shadow-sm">
+        <nav class="nav nav-justified justify-content-center" aria-label="Secondary navigation">
+            <a class="nav-link" href="#">Crear</a>
+            <a class="nav-link" href="#">Actualizar</a>
+            <a class="nav-link" href="#">Eliminar</a>
+        </nav>
+    </div>
+    <a class="nav-link" href="http://127.0.0.1:8000">Regresar al Home</a>
+
+    {% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- The 'action' attribute is not specified because this form is handled by Django's URL dispatcher -->
+                <form method="post" class="form-signin" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="myfile">
+                    <button type="submit">Subir Archivo</button>
+                    <!--{% block container %}-->
+                    {% if uploaded_file_url %}
+                    <p>Archivo subido en: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+                    {% endif %}
+                    <!--{% endblock %}-->
+                </form>
+                
+                <!-- Formulario de models Archivo-->
+                <form action="" method="POST">
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

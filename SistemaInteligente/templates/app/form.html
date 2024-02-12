@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Obtener datos de Gemini y procesar con Generative AI</h1>
+
+<form id="dataForm" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="input_text">Texto de entrada:</label>
+    <input type="text" id="input_text" name="input_text">
+    <br>
+    <label for="pdf">PDF:</label>
+    <input type="file" id="pdf" name="pdf" accept="application/pdf">
+    <br>
+    <input type="submit" value="Enviar">
+</form>
+{% endblock %}
+results.html:
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Resultados</h1>
+
+{% if input_text %}
+    <p>Texto de entrada: {{ input_text }}</p>
+{% endif %}
+
+{% if extracted_text %}
+    <p>Texto extraído: {{ extracted_text }}</p>
+{% endif %}
+
+{% if generated_text %}
+    <p>Texto generado: {{ generated_text }}</p>
+{% endif %}
+{% endblock %}

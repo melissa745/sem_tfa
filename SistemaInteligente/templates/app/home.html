@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestor de Documentos Legales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" aria-label="Main navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Tuza Y Muñoz Abogados</a>
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'subir_pdf' %}">Archivos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Notifications</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">@{{ user.username }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="btn btn-info">Iniciar Sesion</a>
+                    </li>
+
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <hr>
+    
+    <div class="container">
+        <br>
+        {% block content %}
+
+
+        {% endblock content %}
+    </div>
+
+    <main class="container">
+        
+        <div class="main-content">
+            <section>
+                <hgroup>
+                    <h2>Gestión de Documentos Legales</h2>
+                </hgroup>
+                <p>Plataforma para la administración y procesamiento de documentos legales en formato PDF.</p>
+
+                <div class="d-flex flex-row justify-content-between">
+                    <div class="card" style="width: 18rem; margin-right: 1rem;">
+                        <img src="{% static 'img/abogado.jpg' %}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Preguntas</h5>
+                            <p class="card-text">¿Tienes dudas? Sube tu documento y formula tus preguntas. Nuestro sistema inteligente te proporcionará respuestas detalladas y te ayudará a aclarar cualquier incertidumbre sobre la información contenida en tus archivos PDF.</p>
+                            <a href="{% url 'subir_pdf' %}" class="btn btn-danger">Ir a Preguntas</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem; margin-right: 1rem;">
+                        <img src="{% static 'img/libros.jpg' %}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Resumen</h5>
+                            <p class="card-text">Carga tu archivo PDF y obtén un resumen conciso. Nuestra herramienta analiza el contenido y te entrega los puntos clave, permitiéndote comprender la esencia del documento sin necesidad de leerlo por completo.</p>
+                            <a href="{% url 'subir_pdf' %}" class="btn btn-danger">Ir a Resumen</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem; margin-right: 1rem;">
+                        <img src="{% static 'img/arbol.jpg' %}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">Ramas</h5>
+                            <p class="card-text">Organiza y clasifica la información de tu PDF de manera eficiente. Al subir tu documento, nuestro servicio categorizará automáticamente el contenido en ramas temáticas, facilitando la búsqueda y el acceso rápido a la información que necesitas.</p>
+                            <a href="{% url 'subir_pdf' %}" class="btn btn-danger">Ir a Ramas</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="{% static 'img/telefonos.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Notificaciones</h5>
+                            <p class="card-text">Mantente al día con las actualizaciones importantes. Configura alertas para recibir notificaciones sobre cambios o adiciones relevantes en las temáticas de tu interés contenidas en el documento.</p>
+                            <a href="{% url 'subir_pdf' %}" class="btn btn-danger">Ir a Notificaciones</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </section>
+        </div>
+    </main>
+    <br>
+
+    <footer class="text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

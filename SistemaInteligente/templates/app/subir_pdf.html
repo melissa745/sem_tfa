@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload and Question Form</title>
+</head>
+
+<body class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-outline-success" href="#">Regresar</a>
+                <form id="dataForm" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="input_text">Texto de entrada:</label>
+                    <input type="text" id="input_text" name="input_text"><br>
+
+                    <label for="pdf">PDF:</label>
+                    <input type="file" id="pdf" name="myfile" accept="application/pdf"><br>
+
+                    <label for="questions">Preguntas:</label>
+                    <input type="text" name="questions" id="questions" value="¿Qué es la Universidad?">
+
+                    <input type="submit" value="Enviar">
+                </form>
+
+                {% if path %}
+                <p>Archivo subido en: <a href="{{ path }}">{{ filename }}</a></p>
+                {% endif %}
+
+                <h1>Uploaded PDF</h1>
+                {% if pdf_text %}
+                <p>{{ pdf_text }}</p>
+                {% else %}
+                <p>No se pudo extraer texto del PDF.</p>
+                {% endif %}
+
+                <h2>Resumen</h2>
+                {% if summary %}
+                <p>{{ summary }}</p>
+                {% else %}
+                <p>No se pudo resumir el texto del PDF.</p>
+                {% endif %}
+
+                {% if answers %}
+                <h2>Respuestas</h2>
+                <ul>
+                    {% for answer in answers %}
+                    <li>{{ answer }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <p class="mt-5 mb-3 text-muted">&copy; 2020 Mariana Casella de Programación de Verdad</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("dataForm").addEventListener("submit", function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get the current value of the questions input field
+            var questionsInput = document.getElementById("questions");
+            var currentQuestions = questionsInput.value;
+
+            // Prompt the user to enter a new question
+            var newQuestion = prompt("Ingresa una nueva pregunta:");
+
+            // Append the new question to the current questions
+            if (newQuestion) {
+                if (currentQuestions.trim() !== "") {
+                    currentQuestions += ", ";
+                }
+                currentQuestions += newQuestion;
+            }
+
+            // Update the value of the questions input field
+            questionsInput.value = currentQuestions;
+            
+            // Submit the form
+            this.submit();
+        });
+    </script>
+</body>
+
+</html>

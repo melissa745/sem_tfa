@@ -1,0 +1,36 @@
+# El nombre del proyecto
+name: SistemaGestor
+
+# El directorio raíz del proyecto
+root: /Escritorio/ProyectoTFA/env/SistemaGestor$ 
+
+# La URL del sitio web
+url: 127.0.0.1:8000/
+
+# El nombre de la aplicación que se va a rastrear
+app: SistemaGestor
+
+# El entorno en el que se ejecuta el proyecto
+environment: production
+
+# La lista de archivos que se van a rastrear
+files:
+  - models.py
+  - views.py
+  - tests.py
+
+# La lista de directorios que se van a rastrear
+directories:
+  - templates
+  - static
+  - media
+
+# La lista de patrones de archivos que se van a excluir
+exclude_files:
+  - migrations/*.py
+  - settings.py
+
+# Los ajustes personalizados que se van a utilizar
+settings:
+  # El color del fondo del sitio web
+  background_color: pink 
